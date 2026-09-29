@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Login OAuth</title>
+
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-    <main>
-        <div>
 
-            <label>Nome</label>
-            <input placeholder="digite seu nome">
-            <label>Senha</label>
-            <input placeholder="digite sua senha">
+    <main class="container">
 
-            <button>Entrar</button>
+        <div class="login-box">
+
+            <h1>Login</h1>
+
+            <p class="descricao">
+                Entre utilizando uma das opções abaixo.
+            </p>
+
+            <div class="botoes-login">
+
+                <a class="botao google" href="/oauth/login/google">
+                    Entre com Google
+                </a>
+
+                <a class="botao github" href="/oauth/login/github">
+                    Entre com GitHub
+                </a>
+
+            </div>
+
+            <div class="sessao">
+
+                <p id="status">
+                    Verificando conexão...
+                </p>
+
+                <form method="post" action="/oauth/logout">
+                    <button type="submit" class="botao sair">
+                        Sair
+                    </button>
+                </form>
+
+            </div>
 
         </div>
 
-
     </main>
+
+    <script src="/app.js"></script>
+
 </body>
 </html>

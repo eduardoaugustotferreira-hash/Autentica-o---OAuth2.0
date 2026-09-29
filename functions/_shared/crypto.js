@@ -1,5 +1,4 @@
 function base64UrlEncode(bytes) {
-
     let binary = "";
 
     for (const byte of bytes) {
@@ -12,9 +11,7 @@ function base64UrlEncode(bytes) {
         .replace(/=+$/, "");
 }
 
-
 export function randomValue() {
-
     const bytes = new Uint8Array(32);
 
     crypto.getRandomValues(bytes);
@@ -22,9 +19,7 @@ export function randomValue() {
     return base64UrlEncode(bytes);
 }
 
-
 export async function sha256(value) {
-
     const data = new TextEncoder().encode(value);
 
     const hash = await crypto.subtle.digest(
@@ -37,8 +32,6 @@ export async function sha256(value) {
     );
 }
 
-
 export async function createCodeChallenge(codeVerifier) {
-
     return sha256(codeVerifier);
 }

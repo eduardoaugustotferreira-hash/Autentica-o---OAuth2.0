@@ -214,10 +214,19 @@ export async function onRequestGet(context) {
 
 
     if (!tokenResponse.ok) {
-        return errorResponse(
-            "Falha na troca do código OAuth."
-        );
+
+    let errorData = null;
+
+    try {
+        errorData = await tokenResponse.json();
+    } catch {
+        // sem corpo JSON
     }
+
+    return errorResponse(
+        `Erro OAuth: ${errorData?.error ?? tokenResponse.status} - ${errorData?.error_description ?? "sem descrição"}`
+    );
+}
 
 
     const tokenData =

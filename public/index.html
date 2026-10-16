@@ -3,55 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Login OAuth</title>
-
+    <title>Login OAuth & Clima</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
 
     <main class="container">
-
         <div class="login-box">
+            <h1>Bem-vindo</h1>
 
-            <h1>Login</h1>
-
-            <p class="descricao">
-                Entre utilizando uma das opções abaixo.
-            </p>
-
-            <div class="botoes-login">
-
-                <a class="botao google" href="/oauth/login/google">
-                    Entre com Google
-                </a>
-
-                <a class="botao github" href="/oauth/login/github">
-                    Entre com GitHub
-                </a>
-
+            <!-- Bloco de Autenticação (Sempre visível inicialmente) -->
+            <div id="bloco-autenticacao">
+                <p class="descricao">Entre utilizando uma das opções abaixo.</p>
+                <div class="botoes-login">
+                    <a class="botao google" href="/oauth/login/google">Entre com Google</a>
+                    <a class="botao github" href="/oauth/login/github">Entre com GitHub</a>
+                </div>
             </div>
 
+            <!-- Bloco do Clima (Começa oculto, aparece após o login) -->
+            <div id="painel-clima" style="display: none;">
+                <div class="busca-clima">
+                    <input type="text" id="input-cidade" placeholder="Digite uma cidade...">
+                    <button id="btn-buscar">Buscar</button>
+                </div>
+
+                <div class="info-clima">
+                    <h2 id="clima-cidade">-</h2>
+                    <img id="clima-icone" src="" alt="Ícone do clima" style="display: none; margin: 0 auto;">
+                    <p id="clima-temperatura" class="temp-texto">-</p>
+                    <p id="clima-descricao">-</p>
+                </div>
+            </div>
+
+            <!-- Status da Sessão e Desconexão -->
             <div class="sessao">
-
-                <p id="status">
-                    Verificando conexão...
-                </p>
-
-                <form method="post" action="/oauth/logout">
-                    <button type="submit" class="botao sair">
-                        Sair
-                    </button>
+                <p id="status">Verificando conexão...</p>
+                <form id="form-sair" method="post" action="/oauth/logout" style="display: none;">
+                    <button type="submit" class="botao sair">Sair</button>
                 </form>
-
             </div>
-
         </div>
-
     </main>
 
     <script src="/app.js"></script>
-
 </body>
 </html>
